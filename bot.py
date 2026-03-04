@@ -181,10 +181,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 › _"протеин 30г"_
 
 *Команды:*
-/итог — сводка дня + AI-анализ
-/неделя — аналитика за 7 дней
-/план — твой план на сегодня
-/история — данные за 7 дней"""
+/itog — сводка дня + AI-анализ
+/nedelya — аналитика за 7 дней
+/plan — твой план на сегодня
+/history — данные за 7 дней"""
 
     await update.message.reply_text(text, parse_mode="Markdown")
 
@@ -353,26 +353,11 @@ def main():
     app = Application.builder().token(BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
-   app.add_handler(CommandHandler("itog", daily_summary))
+    app.add_handler(CommandHandler("itog", daily_summary))
     app.add_handler(CommandHandler("nedelya", weekly_report))
     app.add_handler(CommandHandler("plan", show_plan))
     app.add_handler(CommandHandler("history", show_history))
-    app.add_handler(CommandHandler("help", start))
-```
-
-И также найди в тексте приветствия (`start` функция):
-```
-/итог — сводка дня + AI-анализ
-/неделя — аналитика за 7 дней
-/план — твой план на сегодня
-/история — данные за 7 дней
-```
-Замени на:
-```
-/itog — сводка дня + AI-анализ
-/nedelya — аналитика за 7 дней
-/plan — твой план на сегодня
-/history — данные за 7 дней
+    app.add_handler(CommandHandler("help2", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_food))
 
     logger.info("🚀 Bot is running!")
@@ -381,3 +366,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
